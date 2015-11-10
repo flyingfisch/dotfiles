@@ -7,14 +7,16 @@ filetype plugin indent on
 
 set number
 
-set smartindent
-
 set autoindent
+set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set list lcs=tab:\|\ 
 
 set nohlsearch
+
+set scrolloff=5
 
 set ttimeoutlen=22
 
@@ -38,6 +40,8 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 
 Plug 'mattn/emmet-vim'
+
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
