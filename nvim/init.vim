@@ -1,23 +1,18 @@
 " basic config
 set shortmess+=I
-
 filetype off
 syntax on
 filetype plugin indent on
-
 set number
-
 set autoindent
 set smartindent
-set tabstop=4
 set shiftwidth=4
+set tabstop=4
 set expandtab
 set list lcs=tab:\|\ 
-
 set nohlsearch
-
 set scrolloff=5
-
+set nowrap
 set ttimeoutlen=22
 
 let NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -70,6 +65,8 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
 
+tnoremap <Esc> <C-\><C-n>
+
 " change cursor in insert mode
 if has("autocmd")
     au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
@@ -96,6 +93,9 @@ let NERDTreeIgnore = ['\.pyc$', '\.o$', '\~$']
 let g:neosnippet#enable_snipmate_compatibility = 1
 
 let g:user_emmet_expandabbr_key = '<Tab>,'
+
+let g:indentLine_bufNameExclude = ['term://*']
+let g:indentLine_fileTypeExclude = ['help', 'nerdtree']
 
 " custom commands
 " super retab (http://vim.wikia.com/wiki/VimTip1592)
