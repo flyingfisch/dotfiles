@@ -15,8 +15,9 @@ set scrolloff=5
 set nowrap
 set ttimeoutlen=22
 
-let NVIM_TUI_ENABLE_TRUE_COLOR=1
-let NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+"True color is enabled in nyaovim
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 let mapleader = ' '
 
@@ -40,12 +41,13 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'PProvost/vim-markdown-jekyll'
+Plug 'othree/html5.vim'
+Plug 'edkolev/promptline.vim'
 
 call plug#end()
 
-
-
 " colors
+let g:gruvbox_contrast_dark="soft"
 set background=dark
 color gruvbox
 
@@ -72,13 +74,6 @@ nmap <leader>f :Files<CR>
 
 tnoremap <Esc> <C-\><C-n>
 
-" change cursor in insert mode
-if has("autocmd")
-    au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-    au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-    au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-endif
-
 " plugin settings
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamecollapse = 1
@@ -96,8 +91,6 @@ let NERDTreeQuitOnOpen = 1
 let NERDTreeIgnore = ['\.pyc$', '\.o$', '\~$']
 
 let g:neosnippet#enable_snipmate_compatibility = 1
-
-let g:user_emmet_expandabbr_key = '<Tab>,'
 
 let g:indentLine_bufNameExclude = ['term://*']
 let g:indentLine_fileTypeExclude = ['help', 'nerdtree']
