@@ -1,5 +1,12 @@
-*
-!nvim/*
+/*
+
+!nvim/
+nvim/autoload/
+nvim/plugged/
+nvim/initgui.vim
+nvim/.init.vim-rplugin~
+
 !README.md
 !.gitignore
+
 
