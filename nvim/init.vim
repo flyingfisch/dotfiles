@@ -17,7 +17,7 @@ set ttimeoutlen=22
 
 "True color is enabled in nyaovim
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 let mapleader = ' '
 
@@ -43,6 +43,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'PProvost/vim-markdown-jekyll'
 Plug 'othree/html5.vim'
 Plug 'edkolev/promptline.vim'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -63,16 +64,13 @@ map <leader>r <ESC>:AirlineRefresh<CR>
 nmap <leader>w :set wrap linebreak nolist wrapmargin=0 textwidth=0<CR>
 nmap <leader>W :set nowrap nolinebreak list<CR>
 
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
 nmap <leader>f :Files<CR>
 
 tnoremap <Esc> <C-\><C-n>
+
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " plugin settings
 let g:airline#extensions#tabline#enabled = 1
@@ -97,10 +95,10 @@ let g:indentLine_fileTypeExclude = ['help', 'nerdtree']
 
 let g:deoplete#enable_at_startup = 1
 
+let g:promptline_theme = { 'a': [233, 240], 'b': [231,71], 'c': [246,237], 'x': [188,234], 'y': [231,240], 'z': [233,183], 'warn': [232,166] }
+
 " custom commands
 " super retab (http://vim.wikia.com/wiki/VimTip1592)
 command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
 command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
 command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
-
-
